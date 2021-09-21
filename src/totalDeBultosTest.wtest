@@ -1,0 +1,39 @@
+import camion2.*
+import cosas2.*
+
+test "test de total de bultos" {
+	// Escenarios
+	// escenario1
+	bumblebee.transformar()
+	arenaAGranel.setPeso(150)
+	
+	// escenario2
+	paqueteDeLadrillos.setCantidadDeLadrillos(80)
+	embalajeDeSeguridad.setContieneA(paqueteDeLadrillos)
+	
+	// escenario3
+	bateriaAntiaerea.conMisiles(false)
+	
+	// escenario4
+	arenaAGranel.setPeso(500)
+	contenedorPortuario.cargarCosa(knightRider)
+	contenedorPortuario.cargarCosa(arenaAGranel)
+
+	// Verificaciones	
+	// verificacion1
+	camion.cargar(bumblebee)
+	camion.cargar(arenaAGranel)	
+	assert.equals(3,camion.totalBultos())
+	
+	// verificacion2
+	camion.cargar(embalajeDeSeguridad)
+	assert.equals(5,camion.totalBultos())
+	
+	// verificacion3
+	camion.cargar(bateriaAntiaerea)	
+	assert.equals(7,camion.totalBultos())
+
+	// verificacion4
+	camion.cargar(contenedorPortuario)	
+	assert.equals(10,camion.totalBultos())	
+}

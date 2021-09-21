@@ -1,10 +1,11 @@
-import cosas.*
+import cosas2.*
 
 object camion {
 	const cosas = []
 	
 	method cargar(cosa) {
 		cosas.add(cosa)
+		cosa.consecuencia()
 	}
 	
 	method descargar(cosa) { cosas.remove(cosa) }
@@ -32,4 +33,6 @@ object camion {
 	method cosaMasPesada() { return cosas.max( { c => c.peso() } ) }
 	
 	method pesos() { return cosas.map( { c => c.peso() } ) }
+	
+	method totalBultos() { return cosas.sum( { c => c.bultos() } ) }
 }

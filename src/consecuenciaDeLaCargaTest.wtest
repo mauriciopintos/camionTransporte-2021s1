@@ -1,0 +1,33 @@
+import camion2.*
+import cosas2.*
+
+
+test "test de consecuencias de la carga" {
+	// escenario y verificacion 1
+	paqueteDeLadrillos.setCantidadDeLadrillos(20)
+	camion.cargar(paqueteDeLadrillos)
+	assert.equals(64,paqueteDeLadrillos.peso())
+		
+	// escenario y verificacion 2
+	arenaAGranel.setPeso(500)
+	camion.cargar(arenaAGranel)
+	assert.equals(520,arenaAGranel.peso())
+	
+	// escenario y verificacion 3
+	bateriaAntiaerea.conMisiles(false)
+	assert.equals(200,bateriaAntiaerea.peso())
+	camion.cargar(bateriaAntiaerea)
+	assert.equals(300,bateriaAntiaerea.peso())
+	
+	// escenario y verificacion 4
+	contenedorPortuario.cargarCosa(knightRider)
+	contenedorPortuario.cargarCosa(bumblebee)
+	camion.cargar(contenedorPortuario)
+	assert.equals(30,bumblebee.nivelPeligrosidad())
+	
+	// escenario y verificacion 5
+	residuosRadioactivos.setPeso(30)
+	embalajeDeSeguridad.setContieneA(residuosRadioactivos)
+	camion.cargar(embalajeDeSeguridad)
+	assert.equals(30,residuosRadioactivos.peso())
+}
